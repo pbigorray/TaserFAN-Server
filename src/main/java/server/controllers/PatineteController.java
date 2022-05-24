@@ -1,13 +1,10 @@
 package server.controllers;
 
-import model.Coche;
 import model.Patinete;
 import model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server.model.JSonTranformer;
-import server.model.coche.ImpCocheService;
-import server.model.patinete.IPateneteService;
 import server.model.patinete.ImpPatineteService;
 import spark.Request;
 import spark.Response;

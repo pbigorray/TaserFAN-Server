@@ -31,7 +31,7 @@ public class ImpMotoService implements IMotoService {
             cs.setString(1, matricula);
             cs.registerOutParameter(2,Types.DECIMAL);
             cs.registerOutParameter(3, Types.VARCHAR);
-            cs.registerOutParameter(4, Types.NUMERIC);
+            cs.registerOutParameter(4, Types.VARCHAR);
             cs.registerOutParameter(5, Types.VARCHAR);
             cs.registerOutParameter(6, Types.NUMERIC);
             cs.registerOutParameter(7, Types.DATE);

@@ -1,10 +1,9 @@
 package server.model.patinete;
 
-import model.Coche;
 import model.Patinete;
 import model.Result;
 
-public interface IPateneteService {
+public interface IPatineteService {
     Patinete getPatinete(String matricula);
     Result<Patinete> addPatinete(Patinete patinete);
     Result<Patinete> updatePatinete(Patinete patinete);

@@ -3,14 +3,64 @@ package server.model.patinete;
 import model.*;
 
 import javax.sql.DataSource;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 
-public class ImpPatineteService implements IPateneteService{
+public class ImpPatineteService implements IPatineteService {
     @Override
     public Patinete getPatinete(String matricula) {
         //consultarPatinete
+
+        DataSource ds = MyDataSource.getOracleDataSource();
+        String sql = "{call gestionvehiculos.consultarPatinete(?,?,?,?,?,?,?,?,?,?,?)}";
+        ResultSet rs;
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+
+
+
+        try (Connection con = ds.getConnection();
+             CallableStatement cs = con.prepareCall(sql)) {
+            String marca,descripcion,color,estado;
+            String fechaAdq;
+            int bateria;
+            String tipoCarnet;
+            double precioHora;
+            int numRuedas,tamanyo;
+
+            cs.setString(1, matricula);
+            cs.registerOutParameter(2, Types.DECIMAL);
+            cs.registerOutParameter(3, Types.VARCHAR);
+            cs.registerOutParameter(4, Types.VARCHAR);
+            cs.registerOutParameter(5, Types.VARCHAR);
+            cs.registerOutParameter(6, Types.NUMERIC);
+            cs.registerOutParameter(7, Types.DATE);
+            cs.registerOutParameter(8, Types.VARCHAR);
+            cs.registerOutParameter(9, Types.VARCHAR);
+            cs.registerOutParameter(10, Types.NUMERIC);
+            cs.registerOutParameter(11, Types.NUMERIC);
+
+
+
+            cs.execute();
+
+
+            precioHora=cs.getDouble(2);
+            marca=cs.getString(3);
+            descripcion=cs.getString(4);
+            color=cs.getString(5);
+            bateria=cs.getInt(6);
+            String formetdate=simpleDateFormat.format(cs.getObject(7));
+            fechaAdq=formetdate;
+            estado=cs.getString(8);
+            tipoCarnet=cs.getString(9);
+            numRuedas=cs.getInt(10);
+            tamanyo=cs.getInt(11);
+
+            return new Patinete(matricula, marca, descripcion, bateria,  tipoCarnet,  color,  estado,  fechaAdq,  precioHora,  Tipo.PATINETE,  numRuedas,  tamanyo);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

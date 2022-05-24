@@ -17,7 +17,7 @@ public class BiciController {
     private static ImpBiciService service=new ImpBiciService();
 
     public static Bicicleta get(Request request, Response response) {
-        logger.info("Request moto by matricula: " + request.queryParams("matricula") );
+        logger.info("Request bici by matricula: " + request.queryParams("matricula") );
         String matricula = request.queryParams("matricula");
 
         response.type("application/json");
@@ -27,7 +27,7 @@ public class BiciController {
     }
 
     public static Result<Bicicleta> delete(Request request, Response res) {
-        logger.info("delete Request moto by matricula: " + request.queryParams("matricula") );
+        logger.info("delete Request bici by matricula: " + request.queryParams("matricula") );
         String matricula = request.queryParams("matricula");
         Result<Bicicleta> result = service.deleteBicicleta(matricula);
         res.type("application/json");
@@ -38,7 +38,7 @@ public class BiciController {
     public static Result<Bicicleta> add(Request request, Response res) {
 
         Bicicleta b = jSonTranformer.getObject(request.body(), Bicicleta.class);
-        logger.info("add Request moto by matricula: " + b.getTipoCarnet() );
+        logger.info("add Request bici by matricula: " + b.getTipoCarnet() );
         Result<Bicicleta> result = service.addBicicleta(b);
         res.type("application/json");
         res.status((result instanceof Result.Sucess)?200:500);
@@ -47,7 +47,7 @@ public class BiciController {
     public static Result<Bicicleta> update(Request request, Response res) {
         Bicicleta b = jSonTranformer.getObject(request.body(), Bicicleta.class);
 
-        logger.info("update Request moto by matricula: " + b.getMatricula() );
+        logger.info("update Request bici by matricula: " + b.getMatricula() );
         Result<Bicicleta> result = service.updateBicicleta(b);
         res.type("application/json");
         res.status((result instanceof Result.Sucess)?200:500);
