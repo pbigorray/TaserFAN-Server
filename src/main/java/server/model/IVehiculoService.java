@@ -11,4 +11,5 @@ public interface IVehiculoService {
     List<Vehiculo> getMoto(String matricula);
     List<Vehiculo> getBici(String matricula);
     List<Vehiculo> getPatinete(String matricula);
+
 }

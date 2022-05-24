@@ -1,5 +1,6 @@
 package server.controllers;
 
+import model.DeletingVehiculo;
 import model.Result;
 import model.Tipo;
 import model.Vehiculo;
@@ -21,6 +22,7 @@ public class VehiculoContoller {
     private static JSonTranformer<Tipo> uwu=new JSonTranformer<>();
 
 
+
     public static List<Vehiculo> getVehiculos(Request req, Response res){
         logger.info("reciving request for all vehiculos");
         return service.getAll();
@@ -36,6 +38,7 @@ public class VehiculoContoller {
 
         return list;
     }
+
 //
 //    public static Result<Vehiculo> addVehiculo(Request request, Response res) {
 //        logger.info("Add new vehiculo");

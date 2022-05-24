@@ -9,5 +9,11 @@ public class API {
         public static  final String AUTHENTICATE="/authenticate";
         public static  final String TIPO_VEHICULO="/tipo";
 
+
+        public static  final String MOTO ="/moto";
+        public static  final String COCHE="/coche";
+        public static  final String BICI="/bici";
+        public static  final String PATINETE="/patinete";
+
     }
 }
