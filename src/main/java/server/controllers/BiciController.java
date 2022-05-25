@@ -38,7 +38,7 @@ public class BiciController {
     public static Result<Bicicleta> add(Request request, Response res) {
 
         Bicicleta b = jSonTranformer.getObject(request.body(), Bicicleta.class);
-        logger.info("add Request bici by matricula: " + b.getTipoCarnet() );
+        logger.info("add Request bici by matricula: " + b.getMatricula() );
         Result<Bicicleta> result = service.addBicicleta(b);
         res.type("application/json");
         res.status((result instanceof Result.Sucess)?200:500);

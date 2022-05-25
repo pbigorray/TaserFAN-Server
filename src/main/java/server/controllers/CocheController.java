@@ -38,7 +38,7 @@ public class CocheController {
     public static Result<Coche> add(Request request, Response res) {
 
         Coche m = jSonTranformer.getObject(request.body(), Coche.class);
-        logger.info("add Request Coche by matricula: " + m.getTipoCarnet() );
+        logger.info("add Request Coche by matricula: " + m.getMatricula() );
         Result<Coche> result = service.addCoche(m);
         res.type("application/json");
         res.status((result instanceof Result.Sucess)?200:500);

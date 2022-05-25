@@ -35,7 +35,7 @@ public class PatineteController {
 
     public static Result<Patinete> add(Request request, Response res) {
         Patinete m = jSonTranformer.getObject(request.body(), Patinete.class);
-        logger.info("add Request Patinete by matricula: " + m.getTipoCarnet() );
+        logger.info("add Request Patinete by matricula: " + m.getMatricula() );
         Result<Patinete> result = service.addPatinete(m);
         res.type("application/json");
         res.status((result instanceof Result.Sucess)?200:500);

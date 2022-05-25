@@ -39,7 +39,7 @@ public class MotoController {
     public static Result<Moto> add(Request request, Response res) {
 
         Moto m = jSonTranformer.getObject(request.body(), Moto.class);
-        logger.info("add Request moto by matricula: " + m.getTipoCarnet() );
+        logger.info("add Request moto by matricula: " + m.getMatricula() );
         Result<Moto> result = service.addMoto(m);
         res.type("application/json");
         res.status((result instanceof Result.Sucess)?200:500);
