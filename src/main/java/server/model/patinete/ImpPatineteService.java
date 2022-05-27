@@ -95,7 +95,7 @@ public class ImpPatineteService implements IPatineteService {
     @Override
     public Result<Patinete> updatePatinete(Patinete patinete) {
         DataSource ds = MyDataSource.getOracleDataSource();
-        String sql = "{call gestionvehiculos.actulizarPatinete(?,?,?,?,?,?,?,?,?,?,?,?)}";
+        String sql = "{call gestionvehiculos.actulizarPatinete(?,?,?,?,?,?,?,?,?,?,?)}";
         try (Connection con = ds.getConnection();
              CallableStatement cs=con.prepareCall(sql);
         ) {
