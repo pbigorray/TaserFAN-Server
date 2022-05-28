@@ -1,13 +1,11 @@
 package server.controllers;
 
 import model.Bicicleta;
-import model.Moto;
 import model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server.model.JSonTranformer;
 import server.model.bici.ImpBiciService;
-import server.model.moto.ImpMotoService;
 import spark.Request;
 import spark.Response;
 
@@ -31,7 +29,7 @@ public class BiciController {
         String matricula = request.queryParams("matricula");
         Result<Bicicleta> result = service.deleteBicicleta(matricula);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
 
@@ -41,7 +39,7 @@ public class BiciController {
         logger.info("add Request bici by matricula: " + b.getMatricula() );
         Result<Bicicleta> result = service.addBicicleta(b);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
     public static Result<Bicicleta> update(Request request, Response res) {
@@ -50,7 +48,7 @@ public class BiciController {
         logger.info("update Request bici by matricula: " + b.getMatricula() );
         Result<Bicicleta> result = service.updateBicicleta(b);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
 }

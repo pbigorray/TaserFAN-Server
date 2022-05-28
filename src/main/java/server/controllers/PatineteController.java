@@ -29,7 +29,8 @@ public class PatineteController {
         String matricula = request.queryParams("matricula");
         Result<Patinete> result = service.deletePatinete(matricula);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
+        res.body();
         return result;
     }
 
@@ -38,7 +39,7 @@ public class PatineteController {
         logger.info("add Request Patinete by matricula: " + m.getMatricula() );
         Result<Patinete> result = service.addPatinete(m);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
     public static Result<Patinete> update(Request request, Response res) {
@@ -46,7 +47,7 @@ public class PatineteController {
         logger.info("update Request Patinete by matricula: " + c.getMatricula() );
         Result<Patinete> result = service.updatePatinete(c);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
 }

@@ -5,7 +5,6 @@ import model.*;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 public class ImpMotoService implements IMotoService {
 
@@ -86,7 +85,7 @@ public class ImpMotoService implements IMotoService {
             cs.setInt(11, moto.getCilindrada());
 
             cs.execute();
-            return new Result.Sucess<Moto>(moto);
+            return new Result.Success<Moto>(moto);
 
         } catch (SQLException e) {
             return new Result.Error(e.getErrorCode(),e.getMessage());
@@ -108,7 +107,7 @@ public class ImpMotoService implements IMotoService {
 
             cs.execute();
 
-            return new Result.Sucess<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.MOTO));
+            return new Result.Success<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.MOTO));
         } catch (SQLException e) {
             e.printStackTrace();
             return new Result.Error(404,e.getMessage());
@@ -137,7 +136,7 @@ public class ImpMotoService implements IMotoService {
 
             cs.execute();
 
-            return new Result.Sucess<Moto>(moto);
+            return new Result.Success<Moto>(moto);
         } catch (SQLException e){
             return new Result.Error(e.getErrorCode(), e.getMessage());
         }

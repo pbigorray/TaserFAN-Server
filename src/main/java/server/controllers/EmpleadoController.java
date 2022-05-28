@@ -26,7 +26,7 @@ public class EmpleadoController  {
         logger.info("get person dni="+dni);
 
         Result result= service.get(dni);
-        if (result instanceof Result.Sucess){
+        if (result instanceof Result.Success){
             res.status(200);
         }else {
             res.status(4);
@@ -39,7 +39,7 @@ public class EmpleadoController  {
         String body=request.body();
         Empleado e = jSonTranformer.getObject(body,Empleado.class);
         Result<Empleado> result=service.add(e);
-        if (result instanceof Result.Sucess){
+        if (result instanceof Result.Success){
             res.status(200);
         }else {
             res.status(4);
@@ -52,7 +52,7 @@ public class EmpleadoController  {
         logger.info("Delete empleado");
         String dni=req.queryParams("dni");
         Result<Empleado> result=service.delete(dni);
-        if (result instanceof Result.Sucess){
+        if (result instanceof Result.Success){
             res.status(200);
         }else {
             res.status(4);
@@ -66,7 +66,7 @@ public class EmpleadoController  {
         AuthenticateData ad = jst.getObject(body,AuthenticateData.class);
         Result<Empleado> result=service.login(ad);
 
-        if (result instanceof Result.Sucess){
+        if (result instanceof Result.Success){
             res.status(200);
         }else {
             res.status(404);

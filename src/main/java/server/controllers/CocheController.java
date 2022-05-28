@@ -1,13 +1,11 @@
 package server.controllers;
 
 import model.Coche;
-import model.Moto;
 import model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server.model.JSonTranformer;
 import server.model.coche.ImpCocheService;
-import server.model.moto.ImpMotoService;
 import spark.Request;
 import spark.Response;
 
@@ -31,7 +29,7 @@ public class CocheController {
         String matricula = request.queryParams("matricula");
         Result<Coche> result = service.deleteCoche(matricula);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
 
@@ -41,7 +39,7 @@ public class CocheController {
         logger.info("add Request Coche by matricula: " + m.getMatricula() );
         Result<Coche> result = service.addCoche(m);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
     public static Result<Coche> update(Request request, Response res) {
@@ -50,7 +48,7 @@ public class CocheController {
         logger.info("update Request Coche by matricula: " + c.getMatricula() );
         Result<Coche> result = service.updateCoche(c);
         res.type("application/json");
-        res.status((result instanceof Result.Sucess)?200:500);
+        res.status((result instanceof Result.Success)?200:500);
         return result;
     }
 }

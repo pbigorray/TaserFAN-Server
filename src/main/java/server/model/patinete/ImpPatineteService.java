@@ -86,7 +86,7 @@ public class ImpPatineteService implements IPatineteService {
 
             cs.execute();
 
-            return new Result.Sucess<Patinete>(patinete);
+            return new Result.Success<Patinete>(patinete);
         } catch (SQLException e){
             return new Result.Error(e.getErrorCode(), e.getMessage());
         }
@@ -113,7 +113,7 @@ public class ImpPatineteService implements IPatineteService {
             cs.setInt(11, patinete.getTamanyo());
 
             cs.execute();
-            return new Result.Sucess<Patinete>(patinete);
+            return new Result.Success<Patinete>(patinete);
 
         } catch (SQLException e) {
             return new Result.Error(e.getErrorCode(),e.getMessage());
@@ -133,10 +133,9 @@ public class ImpPatineteService implements IPatineteService {
 
             cs.execute();
 
-            return new Result.Sucess<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.PATINETE));
+            return new Result.Success<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.PATINETE));
         } catch (SQLException e) {
-            e.printStackTrace();
-            return new Result.Error(404,e.getMessage());
+            return new Result.Error(e.getErrorCode(),e.getMessage());
         }
     }
 

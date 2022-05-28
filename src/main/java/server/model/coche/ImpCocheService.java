@@ -85,7 +85,7 @@ public class ImpCocheService implements ICocheService{
 
             cs.execute();
 
-            return new Result.Sucess<Coche>(coche);
+            return new Result.Success<Coche>(coche);
         } catch (SQLException e){
             return new Result.Error(e.getErrorCode(), e.getMessage());
         }
@@ -112,7 +112,7 @@ public class ImpCocheService implements ICocheService{
             cs.setInt(11, coche.getNumPuertas());
 
             cs.execute();
-            return new Result.Sucess<Coche>(coche);
+            return new Result.Success<Coche>(coche);
 
         } catch (SQLException e) {
             return new Result.Error(e.getErrorCode(),e.getMessage());
@@ -132,7 +132,7 @@ public class ImpCocheService implements ICocheService{
 
             cs.execute();
 
-            return new Result.Sucess<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.COCHE));
+            return new Result.Success<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.COCHE));
         } catch (SQLException e) {
             e.printStackTrace();
             return new Result.Error(404,e.getMessage());

@@ -63,7 +63,7 @@ public class ImpEmpleadoService implements IEmpleadoService {
 
 
                 empleado = new Empleado(dni, nombre, apellidos, email, cargo, pass);
-                return new Result.Sucess<>(empleado);
+                return new Result.Success<>(empleado);
             } else {
                 return new Result.Error( 404,"No existe");
             }
@@ -100,7 +100,7 @@ public class ImpEmpleadoService implements IEmpleadoService {
 
 
                 empleado = new Empleado(dni, nombre, apellidos, email, cargo, pass);
-                return new Result.Sucess<Empleado>(empleado);
+                return new Result.Success<Empleado>(empleado);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,7 +121,7 @@ public class ImpEmpleadoService implements IEmpleadoService {
 
             int count = statement.executeUpdate(sql);
             if (count == 1) {
-                return new Result.Sucess<>(empleado);
+                return new Result.Success<>(empleado);
             } else {
                 return new Result.Error( 404,"No se pudo insertar");
             }
@@ -161,7 +161,7 @@ public class ImpEmpleadoService implements IEmpleadoService {
 
                 empleado = new Empleado(dni, nombre, apellidos, email, cargo, pass);
 
-                return new Result.Sucess<Empleado>(empleado);
+                return new Result.Success<Empleado>(empleado);
             }else {
                 return  new Result.Error(404,"Email o contraseña incorrectos");
             }

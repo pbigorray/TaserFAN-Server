@@ -2,10 +2,24 @@ package model;
 
 public class Result<T> {
 
+    // hide the private constructor to limit subclass types (Success, Error)
+    private Result() {
+    }
+    @Override
+    public String toString() {
+        if (this instanceof Result.Success) {
+            Success<T> success = (Success<T>) this;
+            return "Success[data=" + success.getData().toString() + "]";
+        } else if (this instanceof Result.Error) {
+            Error error = (Error) this;
+            return "Error[exception=" + error.getError() + "]";
+        }
+        return "";
+    }
 
-    public static class  Sucess<T> extends  Result{
+    public static class Success<T> extends  Result{
         private T data;
-        public  Sucess(T data) {
+        public Success(T data) {
             this.data = data;
         }
         public T getData() {
@@ -18,21 +32,22 @@ public class Result<T> {
     }
 
     public static class Error extends Result{
-        private String message;
+        private String error;
         private int code;
 
-        public Error( int code,String message) {
-            this.message = message;
+        public Error( int code,String error) {
+            this.error = error;
             this.code = code;
         }
 
-        public String getMessage() {
-            return message;
+        public String getError() {
+            return error;
         }
 
-        public void setMessage(String message) {
-            this.message = message;
+        public void setError(String error) {
+            this.error = error;
         }
+
 
         public int getCode() {
             return code;

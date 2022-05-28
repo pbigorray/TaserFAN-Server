@@ -79,7 +79,7 @@ public class ImpBiciService implements IBiciService {
 
             cs.execute();
 
-            return new Result.Sucess<Bicicleta>(bicicleta);
+            return new Result.Success<Bicicleta>(bicicleta);
         } catch (SQLException e){
             return new Result.Error(e.getErrorCode(), e.getMessage());
         }
@@ -107,7 +107,7 @@ public class ImpBiciService implements IBiciService {
 
 
             cs.execute();
-            return new Result.Sucess<Bicicleta>(bicicleta);
+            return new Result.Success<Bicicleta>(bicicleta);
 
         } catch (SQLException e) {
             return new Result.Error(e.getErrorCode(),e.getMessage());
@@ -127,7 +127,7 @@ public class ImpBiciService implements IBiciService {
 
             cs.execute();
 
-            return new Result.Sucess<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.BICICLETA));
+            return new Result.Success<Vehiculo>(new Vehiculo(matricula,null,null,null, Tipo.BICICLETA));
         } catch (SQLException e) {
             e.printStackTrace();
             return new Result.Error(404,e.getMessage());
